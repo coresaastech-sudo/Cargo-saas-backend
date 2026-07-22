@@ -1,0 +1,8 @@
+{
+    "name": "Gp",
+    "alias": "gp",
+    "description": "System general parameters and action gateway",
+    "keywords": ["settings", "actions", "organizations", "dictionaries"],
+    "active": 1,
+    "order": 10
+}

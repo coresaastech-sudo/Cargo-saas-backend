@@ -1,0 +1,8 @@
+{
+    "name": "Ap",
+    "alias": "ap",
+    "description": "Backoffice and app authentication surface",
+    "keywords": ["auth", "app"],
+    "active": 1,
+    "order": 20
+}

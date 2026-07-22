@@ -1,0 +1,8 @@
+{
+    "name": "Ca",
+    "alias": "ca",
+    "description": "Cargo operations",
+    "keywords": ["cargo", "shipment"],
+    "active": 1,
+    "order": 50
+}

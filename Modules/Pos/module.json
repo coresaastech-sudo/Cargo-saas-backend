@@ -1,0 +1,8 @@
+{
+    "name": "Pos",
+    "alias": "pos",
+    "description": "Point of sale",
+    "keywords": ["pos"],
+    "active": 1,
+    "order": 70
+}

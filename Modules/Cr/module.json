@@ -1,0 +1,8 @@
+{
+    "name": "Cr",
+    "alias": "cr",
+    "description": "Customer registry",
+    "keywords": ["customer"],
+    "active": 1,
+    "order": 40
+}
