@@ -4,19 +4,22 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Ad\Database\Seeders\AdDatabaseSeeder;
+use Modules\Ap\Database\Seeders\ApDatabaseSeeder;
+use Modules\Cr\Database\Seeders\CrDatabaseSeeder;
+use Modules\Gp\Database\Seeders\GpDatabaseSeeder;
+use Modules\Re\Database\Seeders\ReDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            GpDatabaseSeeder::class,
+            AdDatabaseSeeder::class,
+            ApDatabaseSeeder::class,
+            CrDatabaseSeeder::class,
+            ReDatabaseSeeder::class,
+        ]);
     }
 }
