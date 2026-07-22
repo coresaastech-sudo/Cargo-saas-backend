@@ -7,9 +7,7 @@ use Modules\Gp\Support\ActionCatalog;
 
 class NavigationService
 {
-    public function __construct(private readonly ActionLookupService $actions)
-    {
-    }
+    public function __construct(private readonly ActionLookupService $actions) {}
 
     public function build(): array
     {
@@ -26,6 +24,8 @@ class NavigationService
                         'action' => $action['action_code'],
                         'route' => $action['route'] ?? null,
                         'module_code' => $action['module_code'],
+                        'group_code' => $action['group_code'] ?? null,
+                        'group_name' => $action['group_name'] ?? null,
                     ])
                     ->values()
                     ->all();

@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('gl_account_class', function (Blueprint $table) {
+
+            $table->bigInteger('class')->comment('Ерөнхий дэвтрийн дансны бүлэг');
+            $table->string('name', 100)->comment('Дансны нэр');
+            $table->string('name2', 100)->nullable()->comment('Дансны нэр хоёрдогч хэлээр');
+            $table->string('type', 3)->nullable()->comment('Төрлийн код');
+            $table->string('balmoving', 1)->nullable()->comment('Төв банкны дансны код');
+            $table->smallInteger('listorder')->default(0)->comment('Дэс дугаар');
+
+            $table->smallInteger('statusid')->comment('Төлөв 1 - идэвхтэй, 0 - хаагдсан');
+            $table->bigInteger('instid')->comment('Байгууллагын дугаар');
+            $table->unsignedBigInteger('created_by')->comment('Бүртгэсэн ажилтан');
+            $table->unsignedBigInteger('updated_by')->nullable()->comment('Өөрчилсөн ажилтан');
+            $table->timestamps();
+
+            $table->primary([ 'instid', 'class']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('gl_account_class');
+    }
+};

@@ -25,14 +25,14 @@ class ActionGatewayController extends Controller
             $action = $actions->find($actionCode);
 
             if (! $action) {
-                throw new MeException('ACTION_NOT_FOUND', ['action' => $actionCode], 404);
+                throw new MeException('ACTION_NOT_FOUND', ['posting_code' => $actionCode], 404);
             }
 
             if (! $this->isAllowed($action, $request->user(), $actions)) {
-                throw new MeException('ACTION_FORBIDDEN', ['action' => $actionCode], 403);
+                throw new MeException('ACTION_FORBIDDEN', ['posting_code' => $actionCode], 403);
             }
 
-            $response = App::call($action->controller . '@' . $action->function, ['request' => $request]);
+            $response = App::call($action->controller.'@'.$action->function, ['request' => $request]);
 
             if ($response instanceof JsonResponse) {
                 return $response;
@@ -40,9 +40,12 @@ class ActionGatewayController extends Controller
 
             return $this->success($response);
         } catch (MeException $exception) {
+            $this->storeErrorLog($exception);
+
             return $this->errorResponse($exception);
         } catch (Throwable $exception) {
             Log::error($exception);
+            $this->storeErrorLog($exception);
 
             return response()->json([
                 'response_code' => 'SYSTEM_ERROR',
@@ -53,10 +56,12 @@ class ActionGatewayController extends Controller
 
     private function resolveActionCode(Request $request): string
     {
-        $action = $request->header('action') ?: $request->input('action') ?: $request->input('action_code');
+        $action = $request->header('posting_code')
+            ?: $request->input('posting_code')
+            ?: $request->input('action_code');
 
         if (! is_string($action) || trim($action) === '') {
-            throw new MeException('ACTION_REQUIRED', [], 422);
+            throw new MeException('POSTING_CODE_REQUIRED', [], 422);
         }
 
         return strtolower(trim($action));

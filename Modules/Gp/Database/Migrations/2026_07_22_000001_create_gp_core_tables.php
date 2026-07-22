@@ -50,6 +50,9 @@ return new class extends Migration
         Schema::create('gp_action_registry', function (Blueprint $table) {
             $table->string('action_code', 80)->primary();
             $table->string('module_code', 20)->index();
+            $table->string('group_code', 80)->nullable();
+            $table->string('group_name', 160)->nullable();
+            $table->string('icon', 80)->nullable();
             $table->string('name', 250);
             $table->string('name2', 250)->nullable();
             $table->string('controller', 250);

@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // DB::statement("DROP VIEW IF EXISTS VW_DICT_GP_CONST_020");
+        DB::statement("CREATE OR REPLACE VIEW VW_DICT_GP_CONST_020 AS
+                        SELECT ID,
+                        value || ' - ' || NAME as NAME,
+                            NAME2,
+                            VALUE,
+                            LISTORDER,
+                            INSTID,
+                            VALUE_ADD2
+                        FROM GP_CONST
+                        WHERE PARENT_CODE = 'organization_type' AND IS_SHOW_FRONT = 1
+                        ORDER BY LISTORDER");
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        DB::statement("DROP VIEW VW_DICT_GP_CONST_020");
+    }
+};

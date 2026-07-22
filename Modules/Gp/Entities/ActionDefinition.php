@@ -17,6 +17,9 @@ class ActionDefinition extends Model
     protected $fillable = [
         'action_code',
         'module_code',
+        'group_code',
+        'group_name',
+        'icon',
         'name',
         'name2',
         'controller',

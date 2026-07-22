@@ -1,0 +1,10 @@
+{
+    "name": "Gl",
+    "alias": "gl",
+    "description": "Cargo operational ledger module",
+    "priority": 0,
+    "providers": [
+        "Modules\\Gl\\Providers\\GlServiceProvider"
+    ],
+    "files": []
+}

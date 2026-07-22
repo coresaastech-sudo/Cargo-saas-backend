@@ -29,6 +29,9 @@ return new class extends Migration
                 ['action_code' => $action['action_code']],
                 [
                     'module_code' => $action['module_code'],
+                    'group_code' => $action['group_code'] ?? null,
+                    'group_name' => $action['group_name'] ?? null,
+                    'icon' => $action['icon'] ?? null,
                     'name' => $action['name'],
                     'name2' => $action['name2'] ?? null,
                     'controller' => $action['controller'],

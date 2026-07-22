@@ -173,6 +173,7 @@ return [
         Modules\Ap\Providers\ApServiceProvider::class,
         Modules\Cr\Providers\CrServiceProvider::class,
         Modules\Re\Providers\ReServiceProvider::class,
+        Modules\Gl\Providers\GlServiceProvider::class,
         Modules\Ca\Providers\CaServiceProvider::class,
         Modules\Pos\Providers\PosServiceProvider::class,
     ])->toArray(),

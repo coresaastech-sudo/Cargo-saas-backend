@@ -1,0 +1,46 @@
+<?php
+
+namespace Modules\Cr\Entities\Views;
+
+use App\Models\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class VwCrCustOrgList extends Model
+{
+    use HasFactory;
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $table = 'vw_cr_custorg_lists';
+    protected $fillable = [
+        'id',
+        'custno',
+        'segcode',
+        'birthdate',
+        'lname',
+        'lname2',
+        'name',
+        'name2',
+        'bl',
+        'id1',
+        'custtypecode',
+        'brchno',
+        'brchno_name',
+        'instid',
+        'statusid',
+        'phone',
+        'loancount',
+        'txndate',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'txndate' => 'date:Y-m-d',
+    ];
+}

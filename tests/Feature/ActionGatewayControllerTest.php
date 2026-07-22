@@ -12,12 +12,12 @@ class ActionGatewayControllerTest extends TestCase
 
         $response
             ->assertStatus(422)
-            ->assertJsonPath('response_code', 'ACTION_REQUIRED');
+            ->assertJsonPath('response_code', 'POSTING_CODE_REQUIRED');
     }
 
     public function test_unknown_action_returns_not_found(): void
     {
-        $response = $this->withHeader('action', 'unknown.action')->postJson('/api/v1/back/action');
+        $response = $this->withHeader('posting_code', 'unknown.action')->postJson('/api/v1/back/action');
 
         $response
             ->assertStatus(404)
